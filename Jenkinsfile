@@ -21,7 +21,7 @@ pipeline {
 
         stage('Build & Test') {
             steps {
-                bat 'mvn clean test -Dheadless=%HEADLESS% -Dapp.user=%APP_CREDENTIALS_USR% -Dapp.password=%APP_CREDENTIALS_PSW%'
+                bat 'mvn clean test -Dbrowser.headless=%HEADLESS% -Duser.name=%APP_CREDENTIALS_USR% -Duser.password=%APP_CREDENTIALS_PSW%'
             }
         }
     }
