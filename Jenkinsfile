@@ -21,7 +21,7 @@ pipeline {
 
         stage('Build & Test') {
             steps {
-                bat 'mvn clean test -Dheadless=%HEADLESS%'
+                bat 'mvn clean test -Dheadless=%HEADLESS% -Dapp.user=%APP_CREDENTIALS_USR% -Dapp.password=%APP_CREDENTIALS_PSW%'
             }
         }
     }

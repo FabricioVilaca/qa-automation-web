@@ -13,7 +13,12 @@ public class ConfigLoader {
                      ConfigLoader.class.getClassLoader()
                              .getResourceAsStream("config.properties")) {
 
-            props.load(is);
+            if (is != null) {
+                props.load(is);
+            } else {
+                System.out.println(
+                        "config.properties not found, fallback to env variables");
+            }
 
         } catch (IOException e) {
             throw new RuntimeException("Cannot load config.properties", e);
