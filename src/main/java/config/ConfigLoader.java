@@ -25,11 +25,20 @@ public class ConfigLoader {
     }
 
     public static String get(String key) {
-        return props.getProperty(key);
-    }
 
-    public static int getInt(String key) {
-        return Integer.parseInt(get(key));
+        // Local config.properties
+        String prop = props.getProperty(key);
+        if (prop != null && !prop.isEmpty()) return prop;
+
+        // Env var (CI)
+        String envVar = System.getenv(key.toUpperCase().replace('.', '_'));
+        if (envVar != null && !envVar.isEmpty()) return envVar;
+
+        // System property (-D)
+        String sysProp = System.getProperty(key);
+        if (sysProp != null && !sysProp.isEmpty()) return sysProp;
+
+        throw new IllegalArgumentException("Property '" + key + "' not set in any source!");
     }
 
 }

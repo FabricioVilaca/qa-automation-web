@@ -30,7 +30,7 @@ public class LoginPage extends BaseTest {
 
     public void loginAsStandardUser() {
         login(
-                ConfigLoader.get("user.standard"),
+                ConfigLoader.get("user.name"),
                 ConfigLoader.get("user.password")
         );
     }
