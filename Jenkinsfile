@@ -21,7 +21,7 @@ pipeline {
 
         stage('Build & Test') {
             steps {
-                bat 'mvn clean test' -Dheadless=%HEADLESS%'
+                bat 'mvn clean test -Dheadless=%HEADLESS%'
             }
         }
     }
