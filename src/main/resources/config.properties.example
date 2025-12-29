@@ -1,6 +1,0 @@
-base.url=https://www.saucedemo.com
-timeout=10
-username=
-password=
-browser=chrome
-browser.headless=true

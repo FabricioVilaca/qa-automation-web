@@ -1,17 +1,40 @@
 pipeline {
-    agent any
+    agent { label 'local' }
+
+    tools {
+        jdk 'JDK-17'
+        maven 'Maven-3.9'
+    }
+
+    environment {
+        HEADLESS = 'true'
+        APP_CREDENTIALS = credentials('app-credentials')
+    }
+
     stages {
+
         stage('Checkout') {
-            steps { checkout scm }
+            steps {
+                checkout scm
+            }
         }
-        stage('Build') {
-            steps { sh 'mvn clean compile' }
+
+        stage('Build & Test') {
+            steps {
+                bat 'mvn clean test' -Dheadless=%HEADLESS%'
+            }
         }
-        stage('Run Tests') {
-            steps { sh 'mvn test' }
+    }
+
+    post {
+        always {
+            echo 'Pipeline finished'
         }
-        stage('Publish Reports') {
-            steps { allure includeProperties: false, jdk: '', results: [[path: 'target/allure-results']] }
+        success {
+            echo 'Tests passed'
+        }
+        failure {
+            echo 'Tests failed'
         }
     }
 }

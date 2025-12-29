@@ -17,8 +17,12 @@ public class DriverFactory {
             WebDriverManager.chromedriver().setup();
 
             boolean headless = Boolean.parseBoolean(
-                    ConfigLoader.get("browser.headless")
+                    System.getProperty(
+                            "headless",
+                            ConfigLoader.get("browser.headless")
+                    )
             );
+
 
             ChromeOptions options = new ChromeOptions();
 
