@@ -4,23 +4,21 @@ public class Config {
 
     private Config() {}
 
-    //public static final String BASE_URL = ConfigLoader.get("base.url");
-    //public static final int TIMEOUT = ConfigLoader.getInt("timeout");
-
-    public static String getBaseurl() {
-        String val = ConfigLoader.get("base.url");
-        if (val == null || val.isEmpty()) {
-            return "https://www.saucedemo.com"; // default
-        }
-        return val;
+    public static String baseurl() {
+        return ConfigLoader.get("base.url");
     }
 
-    public static int getTimeout() {
+    public static int timeout() {
         String val = ConfigLoader.get("timeout");
-        if (val == null || val.isEmpty()) {
-            return 10; // default
-        }
         return Integer.parseInt(val);
+    }
+
+    public static String stadardUser() {
+        return ConfigLoader.get("user.name");
+    }
+
+    public static String standardPassword() {
+        return ConfigLoader.get("user.password");
     }
 
 }

@@ -18,7 +18,7 @@ public class LoginPage extends BaseTest {
 
     public void open() {
         log.info("Opening login page");
-        DriverFactory.getDriver().get(Config.getBaseurl());
+        DriverFactory.getDriver().get(Config.baseurl());
     }
 
     public void login(String user, String pass) {

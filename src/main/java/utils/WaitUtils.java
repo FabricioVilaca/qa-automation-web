@@ -16,14 +16,14 @@ public class WaitUtils {
     public static WebElement waitForVisibility(By locator) {
         WebDriverWait wait =
                 new WebDriverWait(DriverFactory.getDriver(),
-                        Duration.ofSeconds(Config.getTimeout()));
+                        Duration.ofSeconds(Config.timeout()));
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
     public static WebElement waitForClickable(By locator) {
         WebDriverWait wait =
                 new WebDriverWait(DriverFactory.getDriver(),
-                        Duration.ofSeconds(Config.getTimeout()));
+                        Duration.ofSeconds(Config.timeout()));
         return wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
 

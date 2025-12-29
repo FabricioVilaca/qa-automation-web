@@ -1,6 +1,7 @@
 package tests;
 
 import base.BaseTest;
+import config.Config;
 import org.junit.jupiter.api.Test;
 import pages.InventoryPage;
 import pages.LoginPage;
@@ -15,7 +16,7 @@ public class LoginTest extends BaseTest {
         InventoryPage inventory = new InventoryPage();
 
         loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(Config.stadardUser(), Config.standardPassword());
 
         assertTrue(inventory.isCartDisplayed());
     }
