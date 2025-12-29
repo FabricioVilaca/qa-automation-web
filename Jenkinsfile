@@ -8,6 +8,7 @@ pipeline {
 
     environment {
         HEADLESS = 'true'
+        BASE_URL = 'https://www.saucedemo.com'
         APP_CREDENTIALS = credentials('app-credentials')
     }
 
@@ -21,7 +22,7 @@ pipeline {
 
         stage('Build & Test') {
             steps {
-                bat 'mvn clean test -Dbrowser.headless=%HEADLESS% -Duser.name=%APP_CREDENTIALS_USR% -Duser.password=%APP_CREDENTIALS_PSW%'
+                bat 'mvn clean test -Dbrowser.headless=%HEADLESS% -Dbase.url=%BASE_URL% -Duser.name=%APP_CREDENTIALS_USR% -Duser.password=%APP_CREDENTIALS_PSW%'
             }
         }
     }
