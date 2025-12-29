@@ -2,7 +2,7 @@ package pages;
 
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
-import tests.BaseTest;
+import base.BaseTest;
 import utils.WaitUtils;
 
 @Slf4j

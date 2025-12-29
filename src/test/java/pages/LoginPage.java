@@ -4,8 +4,7 @@ import config.Config;
 import config.ConfigLoader;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import tests.BaseTest;
+import base.BaseTest;
 import utils.DriverFactory;
 import utils.WaitUtils;
 
