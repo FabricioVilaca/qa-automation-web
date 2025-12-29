@@ -1,5 +1,6 @@
 package driver;
 
+import config.ConfigLoader;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -14,11 +15,19 @@ public class DriverFactory {
     public static WebDriver getDriver() {
         if (driver.get() == null) {
             WebDriverManager.chromedriver().setup();
+
+            boolean headless = Boolean.parseBoolean(
+                    ConfigLoader.get("browser.headless")
+            );
+
             ChromeOptions options = new ChromeOptions();
 
-            options.addArguments("--headless");
+            if (headless) {
+                options.addArguments("--headless=new");
+            }
             options.addArguments("--disable-gpu");
             options.addArguments("--window-size=1920,1080");
+            options.addArguments("--no-sandbox");
             options.addArguments("--disable-dev-shm-usage");
 
             driver.set(new ChromeDriver(options));
