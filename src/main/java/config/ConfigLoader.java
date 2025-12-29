@@ -16,8 +16,7 @@ public class ConfigLoader {
             if (is != null) {
                 props.load(is);
             } else {
-                System.out.println(
-                        "config.properties not found, fallback to env variables");
+                System.out.println("config.properties not found, fallback to env variables");
             }
 
         } catch (IOException e) {
@@ -26,15 +25,6 @@ public class ConfigLoader {
     }
 
     public static String get(String key) {
-        // Env vars
-        String envVar = System.getenv(key.toUpperCase().replace('.', '_'));
-        if (envVar != null && !envVar.isEmpty()) return envVar;
-
-        // System properties (Jenkins -D)
-        String sysProp = System.getProperty(key);
-        if (sysProp != null && !sysProp.isEmpty()) return sysProp;
-
-        // Config file
         return props.getProperty(key);
     }
 
