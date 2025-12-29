@@ -5,7 +5,7 @@ import config.ConfigLoader;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
 import base.BaseTest;
-import utils.DriverFactory;
+import driver.DriverFactory;
 import utils.WaitUtils;
 
 @Slf4j
